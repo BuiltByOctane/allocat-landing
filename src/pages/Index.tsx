@@ -4,6 +4,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
+import SmsSection from "@/components/SmsSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import InsightsSection from "@/components/InsightsSection";
 import ContributeSection from "@/components/ContributeSection";
@@ -61,6 +62,7 @@ const Index = () => {
       <Navbar />
       <HeroSection revealed={revealed} />
       <FeaturesSection />
+      <SmsSection />
       <HowItWorksSection />
       <InsightsSection />
       <ContributeSection />

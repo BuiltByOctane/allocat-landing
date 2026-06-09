@@ -14,20 +14,16 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ["Inter", "sans-serif"],
-        display: ["Outfit", "sans-serif"],
+        sans: ["Hanken Grotesk", "system-ui", "sans-serif"],
+        display: ["Bricolage Grotesque", "sans-serif"],
+        mono: ["JetBrains Mono", "monospace"],
+        body: ["Hanken Grotesk", "sans-serif"], // legacy alias
       },
       colors: {
-        bg: "hsl(var(--bg))",
-        surface: "hsl(var(--surface))",
-        "text-primary": "hsl(var(--text))",
-        muted: "hsl(var(--muted))",
-        stroke: "hsl(var(--stroke))",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        // ── core (HSL) ──
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        "muted-foreground": "hsl(var(--muted-foreground))",
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -42,6 +38,8 @@ export default {
         },
         accent: {
           DEFAULT: "hsl(var(--accent-color))",
+          strong: "hsl(var(--accent-strong))",
+          ink: "hsl(var(--accent-ink))",
           foreground: "hsl(var(--accent-foreground))",
         },
         popover: {
@@ -52,8 +50,38 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        ring: "hsl(var(--ring))",
+
+        // ── semantic (HSL) ──
+        pos: "hsl(var(--pos))",
+        neg: "hsl(var(--neg))",
+        warn: "hsl(var(--warn))",
+        info: "hsl(var(--info))",
+
+        // ── raw surfaces (carry alpha) ──
+        border: "var(--border)",
+        input: "var(--input)",
+        muted: "var(--muted)",
+        tile: "var(--tile)",
+        chip: "var(--chip)",
+        pill: {
+          DEFAULT: "var(--pill)",
+          foreground: "var(--pill-foreground)",
+        },
+
+        // ── legacy aliases (old monochrome class names → new tokens) ──
+        bg: "hsl(var(--background))",
+        surface: "hsl(var(--card))",
+        "text-primary": "hsl(var(--foreground))",
+        stroke: "var(--border)",
       },
       borderRadius: {
+        card: "var(--radius-card)",
+        stat: "var(--radius-stat)",
+        sheet: "var(--radius-sheet)",
+        pill: "var(--radius-pill)",
+        tile: "var(--radius-tile)",
+        nav: "var(--radius-nav)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",

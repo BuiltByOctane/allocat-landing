@@ -1,15 +1,26 @@
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
 import { Github } from "lucide-react";
+import { PillButton } from "@/components/neo/PillButton";
+import gsap from "gsap";
+
+const LOGIN_URL = "https://allocat.xyz/auth/login";
+const GITHUB_URL = "https://github.com/devoctane/allocat";
 
 const FOOTER_LINKS = {
   Product: [
     { label: "Features", href: "#features" },
+    { label: "SMS Auto-Log", href: "#sms" },
     { label: "How It Works", href: "#how-it-works" },
     { label: "Contribute", href: "#contribute" },
   ],
+  Features: [
+    { label: "Budgets & categories", href: "#features" },
+    { label: "Net worth & goals", href: "#features" },
+    { label: "Debt & lent money", href: "#features" },
+    { label: "AlloCat AI", href: "#insights" },
+  ],
   Resources: [
-    { label: "GitHub", href: "https://github.com/devoctane/allocat" },
+    { label: "GitHub", href: GITHUB_URL },
     { label: "Privacy", href: "#" },
     { label: "Terms", href: "#" },
   ],
@@ -21,12 +32,7 @@ const Footer = () => {
   useEffect(() => {
     if (!marqueeRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.to(marqueeRef.current, {
-        xPercent: -50,
-        duration: 40,
-        ease: "none",
-        repeat: -1,
-      });
+      gsap.to(marqueeRef.current, { xPercent: -50, duration: 40, ease: "none", repeat: -1 });
     });
     return () => ctx.revert();
   }, []);
@@ -34,91 +40,73 @@ const Footer = () => {
   const marqueeText = "PLAN YOUR MONEY. LIVE YOUR LIFE. • ".repeat(10);
 
   return (
-    <footer className="relative bg-bg pt-16 md:pt-24 pb-8 overflow-hidden border-t border-stroke">
-      {/* Very faint background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-white/[0.02] blur-[120px]" />
-
+    <footer className="relative overflow-hidden border-t border-border bg-background pb-8 pt-16 md:pt-24">
       <div className="relative z-10">
         {/* Marquee */}
-        <div className="overflow-hidden mb-16 md:mb-24">
-          <div ref={marqueeRef} className="whitespace-nowrap inline-block">
-            <span className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-text-primary/[0.04]">
+        <div className="mb-16 overflow-hidden md:mb-24">
+          <div ref={marqueeRef} className="inline-block whitespace-nowrap">
+            <span className="font-display text-5xl font-bold text-foreground/[0.05] md:text-7xl lg:text-8xl">
               {marqueeText}
             </span>
           </div>
         </div>
 
         {/* CTA section */}
-        <div className="text-center mb-16 md:mb-24 px-4">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl text-text-primary font-display font-bold mb-4">
+        <div className="mb-16 px-4 text-center md:mb-24">
+          <h2 className="t-display-lg mb-4 text-foreground">
             Start for free at
             <br />
-            <span className="text-muted">allocat.xyz</span>
+            <span className="gradient-text">allocat.xyz</span>
           </h2>
-          <p className="text-sm md:text-base text-muted max-w-md mx-auto mb-8">
+          <p className="t-body mx-auto mb-8 max-w-md text-muted-foreground">
             Open source, free forever. No credit card required.
           </p>
-          <div className="inline-flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://allocat.xyz/auth/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl text-sm md:text-base px-10 py-4 bg-text-primary text-bg font-semibold transition-all duration-300 hover:opacity-80 hover:scale-105"
-            >
-              Try Allocat →
-            </a>
-            <a
-              href="https://github.com/devoctane/allocat"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-2xl text-sm md:text-base px-10 py-4 border border-stroke text-muted font-medium transition-all duration-300 hover:border-white/20 hover:text-text-primary"
-            >
-              <Github className="w-4 h-4" />
-              GitHub
-            </a>
+          <div className="inline-flex flex-col justify-center gap-4 sm:flex-row">
+            <PillButton asChild variant="lime" size="lg">
+              <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                Try AlloCat
+              </a>
+            </PillButton>
+            <PillButton asChild variant="outline" size="lg">
+              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                <Github className="h-4 w-4" /> GitHub
+              </a>
+            </PillButton>
           </div>
         </div>
 
         {/* Footer grid */}
-        <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-16 border-t border-stroke pt-12">
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16">
+          <div className="mb-16 grid grid-cols-2 gap-10 border-t border-border pt-12 md:grid-cols-5">
             {/* Logo column */}
             <div className="col-span-2">
-              <a
-                href="#hero"
-                className="flex items-center gap-2.5 mb-4 group w-fit"
-              >
+              <a href="#hero" className="group mb-4 flex w-fit items-center gap-2.5">
                 <img
                   src="/allocat.png"
-                  alt="Allocat"
-                  className="h-8 w-8 invert group-hover:opacity-70 transition-opacity"
+                  alt="AlloCat"
+                  className="h-8 w-8 transition-opacity group-hover:opacity-70 dark:invert"
                 />
-                <span className="text-lg font-display font-bold text-text-primary group-hover:text-muted transition-colors">
+                <span className="font-display text-lg font-bold text-foreground transition-colors group-hover:text-muted-foreground">
                   allocat
                 </span>
               </a>
-              <p className="text-sm text-muted max-w-xs leading-relaxed mb-6">
-                A free, open-source personal finance app. Plan your money. Live
-                your life.
+              <p className="t-body mb-6 max-w-xs text-muted-foreground">
+                A free, open-source personal finance app. Plan your money. Live your life.
               </p>
-              <div className="flex items-center gap-4">
-                <a
-                  href="https://github.com/devoctane/allocat"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-text-primary transition-colors"
-                >
-                  <Github className="w-5 h-5" />
-                </a>
-              </div>
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              >
+                <Github className="h-5 w-5" />
+              </a>
             </div>
 
             {/* Link columns */}
             {Object.entries(FOOTER_LINKS).map(([title, links]) => (
               <div key={title}>
-                <h4 className="text-xs font-display font-bold text-text-primary uppercase tracking-[0.15em] mb-4">
-                  {title}
-                </h4>
+                <h4 className="t-label mb-4 text-foreground">{title}</h4>
                 <ul className="space-y-3">
                   {links.map((link) => (
                     <li key={link.label}>
@@ -126,7 +114,7 @@ const Footer = () => {
                         href={link.href}
                         target={link.href.startsWith("http") ? "_blank" : undefined}
                         rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                        className="text-sm text-muted hover:text-text-primary transition-colors"
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {link.label}
                       </a>
@@ -138,24 +126,22 @@ const Footer = () => {
           </div>
 
           {/* Bottom bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-stroke pt-8">
-            <span className="text-xs text-muted">
+          <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+            <span className="text-xs text-muted-foreground">
               Built by © {new Date().getFullYear()}{" "}
               <a
                 href="https://www.devoctane.in/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-text-primary transition-colors hover:underline"
+                className="transition-colors hover:text-foreground hover:underline"
               >
                 Octane Innovations
               </a>
               . Open source under MIT.
             </span>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-white/40 animate-pulse" />
-              <span className="text-xs text-muted">
-                Open source & actively maintained
-              </span>
+              <span className="h-2 w-2 animate-pulse rounded-full bg-accent-strong" />
+              <span className="text-xs text-muted-foreground">Open source &amp; actively maintained</span>
             </div>
           </div>
         </div>

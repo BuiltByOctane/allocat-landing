@@ -3,14 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="theme-color" content="#efeff0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f0f12" media="(prefers-color-scheme: dark)" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
     <meta name="rating" content="general" />
 
-    <title>AlloCat — Smart Personal Finance, Budgeting & Net Worth Tracker</title>
-    <meta name="description" content="AlloCat is a minimalist, offline-first personal finance PWA. Track budgets, debts, goals, and net worth in INR with AI-powered insights. Free to use." />
-    <meta name="keywords" content="allocat, allocat app, allocat finance, budgeting app, personal finance app, expense tracker, net worth tracker, debt tracker, financial goals, PWA budget app, offline budget app, budgeting India, INR budget tracker, money manager" />
+    <!-- No-flash theme: apply persisted next-themes choice before first paint (default dark) -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme") || "dark";
+          if (t === "system") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+          document.documentElement.classList.add(t);
+          document.documentElement.style.colorScheme = t;
+        } catch (e) {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+
+    <title>AlloCat — Personal Finance with Automatic SMS Expense Tracking</title>
+    <meta name="description" content="AlloCat is a free, open-source, offline-first finance app. Auto-log spends from SMS on Android (on-device & private), manage budgets, track net worth, goals, debt and multi-currency money — with AI insights." />
+    <meta name="keywords" content="allocat, allocat app, allocat finance, budgeting app, personal finance app, expense tracker, sms expense tracker, automatic expense logging, on-device sms parsing, android budget app, net worth tracker, debt tracker, financial goals, multi-currency budget, dark mode finance app, offline PWA finance, money manager" />
     <meta name="application-name" content="AlloCat" />
     <meta name="author" content="AlloCat" />
 
@@ -20,8 +37,8 @@
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="AlloCat" />
-    <meta property="og:title" content="AlloCat — Smart Personal Finance & Budgeting" />
-    <meta property="og:description" content="Track expenses, manage budgets, monitor debts, and grow your net worth with AlloCat — an offline-first personal finance PWA with AI insights." />
+    <meta property="og:title" content="AlloCat — Personal Finance with Automatic SMS Expense Tracking" />
+    <meta property="og:description" content="Free, open-source, offline-first finance app. Spends that log themselves from SMS on Android (on-device & private), plus budgets, net worth, goals, debt, multi-currency and AI insights." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://grow.allocat.app/" />
     <meta property="og:image" content="https://grow.allocat.app/allocat.png" />
@@ -31,13 +48,13 @@
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="AlloCat — Smart Personal Finance & Budgeting" />
-    <meta name="twitter:description" content="Offline-first personal finance PWA. Budgets, debts, goals, and net worth — with AI insights." />
+    <meta name="twitter:title" content="AlloCat — Personal Finance with Automatic SMS Expense Tracking" />
+    <meta name="twitter:description" content="Offline-first finance app. SMS spends that log themselves on Android, budgets, net worth, goals, debt, multi-currency — with AI insights." />
     <meta name="twitter:image" content="https://grow.allocat.app/allocat.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
     <!-- JSON-LD: Organization -->
     <script type="application/ld+json">
@@ -65,7 +82,19 @@
       "applicationSubCategory": "Personal Finance, Budgeting, Net Worth Tracker",
       "operatingSystem": "Web, Android, iOS, Windows, macOS",
       "url": "https://allocat.app",
-      "description": "Minimalist, offline-first personal finance PWA. Track budgets, debts, goals, and net worth with AI-powered insights.",
+      "description": "Free, open-source, offline-first personal finance app. Auto-log spends from SMS on Android (on-device & private), manage budgets, track net worth, goals, debt and multi-currency money — with AI insights.",
+      "featureList": [
+        "Automatic SMS expense logging (Android, on-device, privacy-first)",
+        "Budget management with categories and spend tracking",
+        "Quick spend logging",
+        "Net worth tracking",
+        "Savings goals",
+        "Debt and lent-money tracking",
+        "AlloCat AI financial assistant",
+        "Multi-currency support",
+        "Offline-first PWA",
+        "Light & dark themes with accent colors"
+      ],
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -92,10 +121,10 @@
   <body>
     <div id="root"></div>
     <noscript>
-      <h1>AlloCat — Smart Personal Finance & Budgeting</h1>
-      <p>AlloCat is a minimalist, offline-first personal finance PWA. Track budgets, debts, goals, and net worth in INR with AI-powered insights.</p>
+      <h1>AlloCat — Personal Finance with Automatic SMS Expense Tracking</h1>
+      <p>AlloCat is a free, open-source, offline-first personal finance app. On Android it reads transaction SMS on-device and logs spends automatically. Track budgets, debts, goals, net worth and multi-currency money with AI insights.</p>
       <p>Visit <a href="https://allocat.app">allocat.app</a> to start using AlloCat.</p>
-      <p>Features: budgeting, expense tracking, debt tracking, financial goals, net worth tracker, AI insights, offline-first PWA.</p>
+      <p>Features: automatic SMS expense logging (on-device, private), budgeting, expense tracking, debt &amp; lent-money tracking, financial goals, net worth tracker, AI insights, multi-currency, offline-first PWA, light &amp; dark themes.</p>
     </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 import { Github } from "lucide-react";
+import { PillButton } from "@/components/neo/PillButton";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
   { label: "Features", target: "features" },
+  { label: "SMS Auto-Log", target: "sms" },
   { label: "How It Works", target: "how-it-works" },
   { label: "Contribute", target: "contribute" },
 ];
+
+const LOGIN_URL = "https://allocat.xyz/auth/login";
+const GITHUB_URL = "https://github.com/devoctane/allocat";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -27,31 +33,35 @@ const Navbar = () => {
     <>
       <nav
         id="main-nav"
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b ${
-          scrolled
-            ? "bg-bg/30 backdrop-blur-xl border-white/[0.08] shadow-lg shadow-black/20 py-4"
-            : "bg-transparent border-transparent py-6"
+        className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
+          scrolled ? "py-3" : "py-5"
         }`}
       >
-        <div className="w-full max-w-[1200px] mx-auto flex items-center justify-between px-6 md:px-10 lg:px-16">
+        <div
+          className={`mx-4 flex items-center justify-between px-3 transition-all duration-300 md:mx-auto md:max-w-[1100px] md:px-5 ${
+            scrolled
+              ? "glass-dock rounded-nav border border-border py-2.5"
+              : "border border-transparent py-2"
+          }`}
+        >
           {/* Logo */}
           <button
             onClick={() => handleNav("hero")}
-            className="flex items-center gap-2.5 hover:opacity-70 transition-opacity"
+            className="flex items-center gap-2.5 pl-2 transition-opacity hover:opacity-70"
           >
-            <img src="/allocat.png" alt="Allocat" className="h-7 w-7 invert" />
-            <span className="text-base font-display font-bold text-text-primary tracking-wide">
+            <img src="/allocat.png" alt="AlloCat" className="h-7 w-7 dark:invert" />
+            <span className="font-display text-base font-bold tracking-tight text-foreground">
               allocat
             </span>
           </button>
 
           {/* Desktop nav links */}
-          <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.label}
                 onClick={() => handleNav(link.target)}
-                className="text-sm font-medium text-muted hover:text-text-primary transition-colors"
+                className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
               </button>
@@ -59,71 +69,73 @@ const Navbar = () => {
           </div>
 
           {/* Desktop CTAs */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden items-center gap-2.5 md:flex">
+            <ThemeToggle />
             <a
-              href="https://github.com/devoctane/allocat"
+              href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-text-primary transition-colors"
+              className="grid h-10 w-10 place-items-center rounded-pill border border-border bg-card text-muted-foreground transition-all hover:text-foreground active:scale-[0.92]"
               title="View on GitHub"
             >
-              <Github className="w-5 h-5" />
+              <Github className="h-[18px] w-[18px]" />
             </a>
-            <a
-              href="https://allocat.xyz/auth/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm rounded-full px-6 py-2.5 bg-text-primary text-bg font-semibold transition-all duration-300 hover:opacity-80 hover:scale-105"
-            >
-              Try Allocat
-            </a>
+            <PillButton asChild variant="lime" size="sm">
+              <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
+                Try AlloCat
+              </a>
+            </PillButton>
           </div>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label="Toggle menu"
-          >
-            <span className={`block w-5 h-[2px] bg-text-primary transition-all duration-300 origin-center ${mobileOpen ? "rotate-45 translate-y-[8px]" : ""}`} />
-            <span className={`block w-5 h-[2px] bg-text-primary transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-5 h-[2px] bg-text-primary transition-all duration-300 origin-center ${mobileOpen ? "-rotate-45 -translate-y-[8px]" : ""}`} />
-          </button>
+          {/* Mobile controls */}
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+              className="flex flex-col gap-1.5 p-2"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle menu"
+            >
+              <span className={`block h-[2px] w-5 origin-center bg-foreground transition-all duration-300 ${mobileOpen ? "translate-y-[8px] rotate-45" : ""}`} />
+              <span className={`block h-[2px] w-5 bg-foreground transition-all duration-300 ${mobileOpen ? "opacity-0" : ""}`} />
+              <span className={`block h-[2px] w-5 origin-center bg-foreground transition-all duration-300 ${mobileOpen ? "-translate-y-[8px] -rotate-45" : ""}`} />
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="fixed inset-0 z-40 bg-bg/98 backdrop-blur-xl flex flex-col items-center justify-center gap-8 pt-20">
+        <div className="fixed inset-0 z-40 flex flex-col items-center justify-center gap-7 bg-background/95 pt-20 backdrop-blur-xl">
           {NAV_LINKS.map((link) => (
             <button
               key={link.label}
               onClick={() => handleNav(link.target)}
-              className="text-2xl font-display font-semibold text-text-primary hover:text-muted transition-colors"
+              className="font-display text-2xl font-bold text-foreground transition-colors hover:text-muted-foreground"
             >
               {link.label}
             </button>
           ))}
-          <div className="flex flex-col items-center gap-4 mt-4">
+          <div className="mt-4 flex flex-col items-center gap-4">
             <a
-              href="https://github.com/devoctane/allocat"
+              href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-base text-muted hover:text-text-primary transition-colors"
+              className="flex items-center gap-2 text-base text-muted-foreground transition-colors hover:text-foreground"
               onClick={() => setMobileOpen(false)}
             >
-              <Github className="w-5 h-5" />
+              <Github className="h-5 w-5" />
               GitHub
             </a>
-            <a
-              href="https://allocat.xyz/auth/login"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg rounded-full px-8 py-3.5 bg-text-primary text-bg font-semibold transition-all duration-300 hover:opacity-80"
-              onClick={() => setMobileOpen(false)}
-            >
-              Try Allocat
-            </a>
+            <PillButton asChild variant="lime" size="lg">
+              <a
+                href={LOGIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+              >
+                Try AlloCat
+              </a>
+            </PillButton>
           </div>
         </div>
       )}

@@ -51,7 +51,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
       {!exiting ? (
         <motion.div
           key="loading"
-          className="fixed inset-0 z-[9999] bg-bg flex flex-col justify-between"
+          className="fixed inset-0 z-[9999] flex flex-col justify-between bg-background"
           exit={{ y: "-100%", opacity: 0 }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
         >
@@ -60,10 +60,10 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="p-8 flex items-center gap-3"
+            className="flex items-center gap-3 p-8"
           >
-            <img src="/allocat.png" alt="Allocat" className="h-8 w-8 invert" />
-            <span className="text-sm font-display font-semibold text-text-primary tracking-wide">
+            <img src="/allocat.png" alt="AlloCat" className="h-8 w-8 dark:invert" />
+            <span className="font-display text-sm font-bold tracking-tight text-foreground">
               allocat
             </span>
           </motion.div>
@@ -75,12 +75,12 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
                 <motion.img
                   key="logo"
                   src="/allocat.png"
-                  alt="Allocat Logo"
+                  alt="AlloCat Logo"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   exit={{ scale: 1.1, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="w-24 h-24 md:w-32 md:h-32 invert"
+                  className="h-24 w-24 dark:invert md:h-32 md:w-32"
                 />
               ) : (
                 <motion.span
@@ -89,7 +89,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -20, opacity: 0 }}
                   transition={{ duration: 0.3, ease: "easeOut" }}
-                  className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-text-primary/80"
+                  className="t-display-md text-5xl text-foreground md:text-7xl"
                 >
                   {WORDS[wordIndex]}
                 </motion.span>
@@ -98,16 +98,16 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
           </div>
 
           {/* Bottom — counter */}
-          <div className="p-8 flex flex-col items-end">
-            <span className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-text-primary tabular-nums">
+          <div className="flex flex-col items-end p-8">
+            <span className="figure text-6xl text-foreground md:text-8xl lg:text-9xl">
               {String(count).padStart(3, "0")}
             </span>
           </div>
 
-          {/* Progress bar — monochrome white */}
-          <div className="h-[2px] bg-stroke/50 w-full">
+          {/* Progress bar — lime */}
+          <div className="h-[3px] w-full bg-border">
             <div
-              className="h-full bg-text-primary/80 transition-transform duration-75 origin-left"
+              className="h-full origin-left bg-accent transition-transform duration-75"
               style={{ transform: `scaleX(${count / 100})` }}
             />
           </div>
@@ -116,7 +116,7 @@ const LoadingScreen = ({ onComplete }: LoadingScreenProps) => {
         // Curtain panel that slides up and off screen
         <motion.div
           key="curtain"
-          className="fixed inset-0 z-[9999] bg-bg"
+          className="fixed inset-0 z-[9999] bg-background"
           initial={{ y: 0 }}
           animate={{ y: "-100%" }}
           transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}

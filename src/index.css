@@ -2,38 +2,100 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   AlloCat — Neo · Lime design tokens (mirrors the app)
+   Light defaults in :root, dark override in .dark (next-themes class strategy).
+   Solid colors are HSL triples consumed via hsl(var(--x)).
+   Translucent surfaces (border/muted/tile/chip in dark) are raw values
+   consumed via var(--x) — alpha would be lost through hsl().
+   ============================================================ */
 @layer base {
   :root {
-    /* Monochrome palette — pure black & white */
-    --bg: 0 0% 4%;
-    --surface: 0 0% 8%;
-    --text: 0 0% 96%;
-    --muted: 0 0% 50%;
-    --stroke: 0 0% 13%;
+    /* fonts */
+    --font-sans: 'Hanken Grotesk', system-ui, sans-serif;
+    --font-display: 'Bricolage Grotesque', var(--font-sans);
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --font-body: var(--font-sans); /* legacy alias */
 
-    --font-body: 'Inter', sans-serif;
-    --font-display: 'Outfit', sans-serif;
+    /* LIGHT — solids (HSL) */
+    --background: 240 4% 94%;        /* #efeff0 */
+    --foreground: 240 6% 7%;         /* #111113 */
+    --card: 0 0% 100%;               /* #ffffff */
+    --card-foreground: 240 6% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 6% 7%;
+    --primary: 240 6% 7%;            /* #111113 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 6% 96%;
+    --secondary-foreground: 240 6% 7%;
+    --muted-foreground: 240 3% 57%;  /* #8e8e94 */
+    --accent-color: 75 82% 62%;      /* #c6ee4d  (lime, shadcn "accent") */
+    --accent-strong: 77 67% 51%;     /* #a7d62e */
+    --accent-ink: 72 74% 15%;        /* #37420a */
+    --accent-foreground: 72 74% 15%; /* dark olive ink on lime */
+    --destructive: 9 73% 59%;        /* = neg */
+    --destructive-foreground: 0 0% 100%;
+    --ring: 77 67% 51%;              /* accent-strong */
 
-    --background: 0 0% 4%;
-    --foreground: 0 0% 96%;
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 96%;
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 96%;
-    --primary: 0 0% 96%;
-    --primary-foreground: 0 0% 4%;
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 96%;
-    --muted-color: 0 0% 50%;
-    --muted-foreground: 0 0% 50%;
-    --accent-color: 0 0% 96%;
-    --accent-foreground: 0 0% 4%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 96%;
-    --border: 0 0% 13%;
-    --input: 0 0% 13%;
-    --ring: 0 0% 60%;
-    --radius: 0.75rem;
+    /* semantic */
+    --pos: 150 32% 36%;   /* #3f7a5c */
+    --neg: 9 73% 59%;     /* #e5604a */
+    --warn: 41 65% 36%;   /* #9a7320 */
+    --info: 210 26% 41%;  /* #4e6a85 */
+
+    /* LIGHT — raw surfaces */
+    --border: #ececec;
+    --input: #ececec;
+    --muted: #f3f3f4;
+    --tile: #f3f3f4;
+    --chip: #ffffff;
+    --pill: #111113;
+    --pill-foreground: #ffffff;
+    --dock: rgba(255, 255, 255, 0.7);
+
+    /* radii (mirrors app @theme) */
+    --radius-card: 26px;
+    --radius-stat: 24px;
+    --radius-sheet: 28px;
+    --radius-pill: 999px;
+    --radius-tile: 11px;
+    --radius-nav: 30px;
+    --radius: 0.75rem; /* legacy shadcn */
+  }
+
+  .dark {
+    --background: 240 9% 6%;          /* #0f0f12 */
+    --foreground: 240 13% 95%;        /* #f2f2f5 */
+    --card: 240 9% 11%;               /* #1a1a1f */
+    --card-foreground: 240 13% 95%;
+    --popover: 240 9% 11%;
+    --popover-foreground: 240 13% 95%;
+    --primary: 240 13% 95%;
+    --primary-foreground: 240 9% 6%;
+    --secondary: 240 8% 16%;
+    --secondary-foreground: 240 13% 95%;
+    --muted-foreground: 240 4% 57%;   /* #8c8c95 */
+    --accent-color: 75 82% 62%;       /* lime stays constant */
+    --accent-strong: 79 78% 60%;      /* #b6e84a */
+    --accent-ink: 76 53% 8%;          /* #1b210a */
+    --accent-foreground: 76 53% 8%;
+    --destructive: 9 100% 70%;
+    --destructive-foreground: 240 9% 6%;
+    --ring: 79 78% 60%;
+
+    --pos: 150 28% 56%;   /* #6fae8f */
+    --neg: 9 100% 70%;    /* #ff7e66 */
+    --warn: 37 55% 64%;   /* #d6b072 */
+    --info: 209 30% 65%;  /* #8aa6c0 */
+
+    --border: rgba(255, 255, 255, 0.10);
+    --input: rgba(255, 255, 255, 0.14);
+    --muted: rgba(255, 255, 255, 0.07);
+    --tile: rgba(255, 255, 255, 0.07);
+    --chip: rgba(255, 255, 255, 0.08);
+    --pill: #0a0a0c;
+    --pill-foreground: #ffffff;
+    --dock: rgba(20, 20, 24, 0.6);
   }
 }
 
@@ -42,28 +104,110 @@
     @apply border-border;
   }
   body {
-    font-family: var(--font-body);
-    @apply bg-bg text-text-primary antialiased;
+    font-family: var(--font-sans);
+    @apply bg-background text-foreground antialiased;
   }
   html {
     scroll-behavior: auto; /* Lenis handles smooth scroll */
   }
+  /* Keep anchored section headings clear of the fixed nav */
+  section[id] {
+    scroll-margin-top: 6rem;
+  }
 }
 
-/* Monochrome gradient — white shimmer only */
-.accent-gradient {
-  background: linear-gradient(90deg, #ffffff 0%, #a1a1a1 100%);
+/* ============================================================
+   Type scale — mirrors the app's globals.css utilities
+   ============================================================ */
+@layer components {
+  .t-display-hero {
+    font-family: var(--font-display);
+    font-size: clamp(44px, 12vw, 92px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+  }
+  .t-display-lg {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
+  .t-display-md {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+  .t-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: -0.027em;
+    font-weight: 700;
+  }
+  .t-heading {
+    font-family: var(--font-sans);
+    font-size: 17px;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    font-weight: 700;
+  }
+  .t-body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .t-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .figure {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+  }
 }
 
+/* Lime → accent-strong sweep, used sparingly */
 .gradient-text {
-  background-image: linear-gradient(90deg, #ffffff 0%, #a1a1a1 100%);
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--accent-color)) 0%,
+    hsl(var(--accent-strong)) 100%
+  );
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 
-/* Custom animations */
+/* Signature faint cat-paw watermark for lime surfaces */
+.wordmark-watermark {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='%2337420a'%3E%3Cellipse cx='48' cy='62' rx='17' ry='14'/%3E%3Ccircle cx='27' cy='42' r='7.5'/%3E%3Ccircle cx='42' cy='31' r='8'/%3E%3Ccircle cx='58' cy='31' r='8'/%3E%3Ccircle cx='69' cy='44' r='7.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 96px 96px;
+  opacity: 0.07;
+}
+
+/* Glass dock effect for the floating nav (mirrors app .glass-dock) */
+.glass-dock {
+  background: var(--dock);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ============================================================
+   Custom keyframes (retained from the original landing)
+   ============================================================ */
 @keyframes scroll-down {
   0%   { transform: translateY(-100%); opacity: 0; }
   30%  { opacity: 1; }
