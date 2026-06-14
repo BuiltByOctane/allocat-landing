@@ -9,7 +9,7 @@ const steps = [
     number: "01",
     title: "Sign Up",
     description:
-      "Create your free account with just an email or Google. No credit card, no subscription — start in seconds.",
+      "Create your free account with just an email or Google. No credit card needed — start in seconds.",
   },
   {
     icon: LayoutDashboard,

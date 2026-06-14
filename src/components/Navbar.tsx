@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Github } from "lucide-react";
 import { PillButton } from "@/components/neo/PillButton";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -7,11 +6,10 @@ const NAV_LINKS = [
   { label: "Features", target: "features" },
   { label: "SMS Auto-Log", target: "sms" },
   { label: "How It Works", target: "how-it-works" },
-  { label: "Contribute", target: "contribute" },
+  { label: "Pricing", target: "pricing" },
 ];
 
 const LOGIN_URL = "https://allocat.xyz/auth/login";
-const GITHUB_URL = "https://github.com/devoctane/allocat";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -71,15 +69,6 @@ const Navbar = () => {
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-2.5 md:flex">
             <ThemeToggle />
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid h-10 w-10 place-items-center rounded-pill border border-border bg-card text-muted-foreground transition-all hover:text-foreground active:scale-[0.92]"
-              title="View on GitHub"
-            >
-              <Github className="h-[18px] w-[18px]" />
-            </a>
             <PillButton asChild variant="lime" size="sm">
               <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
                 Try AlloCat
@@ -116,16 +105,6 @@ const Navbar = () => {
             </button>
           ))}
           <div className="mt-4 flex flex-col items-center gap-4">
-            <a
-              href={GITHUB_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-base text-muted-foreground transition-colors hover:text-foreground"
-              onClick={() => setMobileOpen(false)}
-            >
-              <Github className="h-5 w-5" />
-              GitHub
-            </a>
             <PillButton asChild variant="lime" size="lg">
               <a
                 href={LOGIN_URL}

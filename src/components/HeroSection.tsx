@@ -1,11 +1,19 @@
 import { useRef } from "react";
-import { ArrowRight, Github, ShieldCheck, WifiOff } from "lucide-react";
+import { ArrowRight, ShieldCheck, WifiOff } from "lucide-react";
 import { PillButton } from "@/components/neo/PillButton";
 import LimeCard from "@/components/neo/LimeCard";
 import Chip from "@/components/neo/Chip";
 
 const LOGIN_URL = "https://allocat.xyz/auth/login";
-const GITHUB_URL = "https://github.com/devoctane/allocat";
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.octane.allocat";
+
+/** Google Play badge-style mark. */
+const PlayIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden>
+    <path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-221.3 60.1 60.1L104.6 499z" />
+  </svg>
+);
 
 interface HeroSectionProps {
   revealed: boolean;
@@ -50,7 +58,7 @@ const HeroSection = (_props: HeroSectionProps) => {
 
         {/* Eyebrow */}
         <div className="hero-brand mb-6 opacity-0" style={{ willChange: "opacity, transform" }}>
-          <Chip variant="default">Open-source personal finance</Chip>
+          <Chip variant="default">Personal finance, automated</Chip>
         </div>
 
         {/* Headline */}
@@ -67,8 +75,8 @@ const HeroSection = (_props: HeroSectionProps) => {
           className="hero-sub t-body mb-9 max-w-xl text-muted-foreground opacity-0"
           style={{ willChange: "opacity, transform, filter" }}
         >
-          A free, open-source, offline-first finance app. Budgets, net worth, goals, debt — and
-          SMS spends that log themselves. No subscriptions. No noise.
+          An offline-first finance app. Budgets, net worth, goals, debt — and SMS spends that log
+          themselves. Free to start, no card required.
         </p>
 
         {/* CTAs */}
@@ -82,8 +90,8 @@ const HeroSection = (_props: HeroSectionProps) => {
             </a>
           </PillButton>
           <PillButton asChild variant="outline" size="lg">
-            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-              <Github className="h-4 w-4" /> View on GitHub
+            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+              <PlayIcon className="h-4 w-4" /> Get it on Google Play
             </a>
           </PillButton>
         </div>

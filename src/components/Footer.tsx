@@ -1,17 +1,24 @@
 import { useEffect, useRef } from "react";
-import { Github } from "lucide-react";
 import { PillButton } from "@/components/neo/PillButton";
 import gsap from "gsap";
 
 const LOGIN_URL = "https://allocat.xyz/auth/login";
-const GITHUB_URL = "https://github.com/devoctane/allocat";
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.octane.allocat";
+
+/** Google Play badge-style mark. */
+const PlayIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden>
+    <path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-221.3 60.1 60.1L104.6 499z" />
+  </svg>
+);
 
 const FOOTER_LINKS = {
   Product: [
     { label: "Features", href: "#features" },
     { label: "SMS Auto-Log", href: "#sms" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Contribute", href: "#contribute" },
+    { label: "Pricing", href: "#pricing" },
   ],
   Features: [
     { label: "Budgets & categories", href: "#features" },
@@ -20,7 +27,7 @@ const FOOTER_LINKS = {
     { label: "AlloCat AI", href: "#insights" },
   ],
   Resources: [
-    { label: "GitHub", href: GITHUB_URL },
+    { label: "Get on Google Play", href: PLAY_STORE_URL },
     { label: "Privacy", href: "#" },
     { label: "Terms", href: "#" },
   ],
@@ -59,7 +66,7 @@ const Footer = () => {
             <span className="gradient-text">allocat.xyz</span>
           </h2>
           <p className="t-body mx-auto mb-8 max-w-md text-muted-foreground">
-            Open source, free forever. No credit card required.
+            Free to start. No credit card required.
           </p>
           <div className="inline-flex flex-col justify-center gap-4 sm:flex-row">
             <PillButton asChild variant="lime" size="lg">
@@ -68,8 +75,8 @@ const Footer = () => {
               </a>
             </PillButton>
             <PillButton asChild variant="outline" size="lg">
-              <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4" /> GitHub
+              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+                <PlayIcon className="h-4 w-4" /> Get it on Google Play
               </a>
             </PillButton>
           </div>
@@ -91,15 +98,16 @@ const Footer = () => {
                 </span>
               </a>
               <p className="t-body mb-6 max-w-xs text-muted-foreground">
-                A free, open-source personal finance app. Plan your money. Live your life.
+                A private, offline-first personal finance app. Plan your money. Live your life.
               </p>
               <a
-                href={GITHUB_URL}
+                href={PLAY_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-muted-foreground transition-colors hover:text-foreground"
+                aria-label="Get it on Google Play"
               >
-                <Github className="h-5 w-5" />
+                <PlayIcon className="h-5 w-5" />
               </a>
             </div>
 
@@ -137,11 +145,11 @@ const Footer = () => {
               >
                 Octane Innovations
               </a>
-              . Open source under MIT.
+              . All rights reserved.
             </span>
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 animate-pulse rounded-full bg-accent-strong" />
-              <span className="text-xs text-muted-foreground">Open source &amp; actively maintained</span>
+              <span className="text-xs text-muted-foreground">Actively maintained</span>
             </div>
           </div>
         </div>
