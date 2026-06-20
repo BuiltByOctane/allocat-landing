@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 import { Check, Sparkles, Infinity as InfinityIcon } from "lucide-react";
 import { fadeUp } from "@/lib/motionVariants";
 import SectionBadge from "@/components/neo/SectionBadge";
-import { PillButton } from "@/components/neo/PillButton";
-
-const PLAY_STORE_URL =
-  "https://play.google.com/store/apps/details?id=com.octane.allocat";
+import { AppStoreButton } from "@/components/DownloadCTA";
 
 const freeFeatures = [
   "Smart budgets & categories",
@@ -28,13 +25,6 @@ const premiumFeatures = [
   "40-day free trial — no card needed",
   "Priority updates",
 ];
-
-/** Google Play badge-style mark. */
-const PlayIcon = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 512 512" className={className} fill="currentColor" aria-hidden>
-    <path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-221.3 60.1 60.1L104.6 499z" />
-  </svg>
-);
 
 const PricingSection = () => {
   const [annual, setAnnual] = useState(true);
@@ -106,11 +96,7 @@ const PricingSection = () => {
                 </li>
               ))}
             </ul>
-            <PillButton asChild variant="outline" size="lg">
-              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-                <PlayIcon className="h-4 w-4" /> Get it on Google Play
-              </a>
-            </PillButton>
+            <AppStoreButton variant="outline" size="lg" />
           </motion.div>
 
           {/* Premium */}
@@ -143,11 +129,12 @@ const PricingSection = () => {
                 </li>
               ))}
             </ul>
-            <PillButton asChild variant="lime" size="lg">
-              <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
-                <PlayIcon className="h-4 w-4" /> Start 40-day free trial
-              </a>
-            </PillButton>
+            <AppStoreButton
+              variant="lime"
+              size="lg"
+              label="Start 40-day free trial"
+              iosLabel="Start 40-day free trial"
+            />
           </motion.div>
         </div>
 
