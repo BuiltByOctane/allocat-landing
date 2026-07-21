@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const WORDS = ["Track", "Budget", "Grow", "logo"];
+const WORDS = ["Budget", "Track", "Grow", "logo"];
 const DURATION = 3600;
 
 interface LoadingScreenProps {

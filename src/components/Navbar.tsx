@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { PillButton } from "@/components/neo/PillButton";
 import ThemeToggle from "@/components/ThemeToggle";
+import { LOGIN_URL } from "@/lib/links";
 
 const NAV_LINKS = [
   { label: "Features", target: "features" },
@@ -8,8 +9,6 @@ const NAV_LINKS = [
   { label: "How It Works", target: "how-it-works" },
   { label: "Pricing", target: "pricing" },
 ];
-
-const LOGIN_URL = "https://allocat.xyz/auth/login";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);

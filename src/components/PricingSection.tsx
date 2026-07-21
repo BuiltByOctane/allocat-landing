@@ -7,22 +7,22 @@ import { AppStoreButton } from "@/components/DownloadCTA";
 
 const freeFeatures = [
   "Smart budgets & categories",
-  "SMS auto-tracking — spends log themselves",
+  "Automatic spend detection from bank SMS",
   "Net worth tracking & snapshots",
   "Up to 3 savings goals",
   "Up to 5 assets",
   "Track up to 2 debts / lent money",
-  "Offline-first & private by design",
+  "Private by design, no ads, no tracking",
   "Themes, accents, light & dark",
 ];
 
 const premiumFeatures = [
   "Everything in Free",
-  "AlloCat AI — chat & spending insights",
+  "AlloCat AI, chat and spending insights",
   "Unlimited savings goals",
   "Unlimited assets",
-  "Unlimited debts & lent money",
-  "40-day free trial — no card needed",
+  "Unlimited debt tracking & lent money",
+  "40-day free trial, no card needed",
   "Priority updates",
 ];
 
@@ -44,8 +44,8 @@ const PricingSection = () => {
             <span className="text-muted-foreground">Upgrade when you&apos;re ready.</span>
           </h2>
           <p className="t-body mx-auto max-w-lg text-muted-foreground">
-            Every core feature is free forever — including SMS auto-tracking. Go Premium for
-            AlloCat AI and no limits.
+            Every core feature is free forever, including automatic spend detection. Go Premium
+            for AlloCat AI and no limits.
           </p>
         </motion.div>
 
@@ -115,7 +115,7 @@ const PricingSection = () => {
               <span className="t-label text-muted-foreground">{per}</span>
             </div>
             <p className="mb-8 text-[13px] font-semibold text-accent-strong">
-              {annual ? "Just ₹58/mo, billed yearly" : "or ₹699/year — save 26%"}
+              {annual ? "Just ₹58/mo, billed yearly" : "or ₹699/year, save 26%"}
             </p>
             <ul className="mb-8 flex-1 space-y-3.5">
               {premiumFeatures.map((f) => (
@@ -141,7 +141,7 @@ const PricingSection = () => {
         {/* Billing note */}
         <motion.p {...fadeUp} className="mx-auto max-w-xl text-center text-[13px] text-muted-foreground">
           Premium is purchased securely through Google Play in the Android app. Your subscription
-          unlocks AlloCat everywhere you sign in — web and mobile.
+          unlocks AlloCat everywhere you sign in: on the web and in the app.
         </motion.p>
       </div>
     </section>

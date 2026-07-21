@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Wallet,
   PieChart,
-  BarChart3,
+  BellRing,
   Brain,
   Target,
   CreditCard,
@@ -15,50 +15,50 @@ import PhoneMockup from "@/components/neo/PhoneMockup";
 const features = [
   {
     icon: Wallet,
-    title: "Budget Management",
+    title: "Budget every rupee",
     description:
-      "Set a monthly budget, create spending categories with emoji, and track exactly how much is allocated vs. used — in real time.",
+      "At the start of the month, split your income into budgets, like rent, food, and fun money. Every rupee gets a job before you spend it, so nothing just disappears.",
   },
   {
-    icon: BarChart3,
-    title: "Quick Spend Logging",
+    icon: BellRing,
+    title: "Spends notice themselves",
     description:
-      "Log a spend in seconds from the dashboard. Pick a category, enter the amount — done. No tedious forms.",
+      "Pay with UPI or a card and your bank sends an SMS. AlloCat reads it right on your phone and lets you know a spend just happened, no typing required.",
   },
   {
     icon: PieChart,
-    title: "Net Worth Tracking",
+    title: "Net worth, tracked",
     description:
-      "Add your assets and liabilities. AlloCat calculates your net worth and shows your growth over time with a clean chart.",
+      "Add what you own and what you owe. AlloCat adds it up and shows how it grows over time with a clean chart.",
   },
   {
     icon: Target,
-    title: "Financial Goals",
+    title: "Goals that keep moving",
     description:
-      "Set savings goals — a new phone, an emergency fund, a vacation — and watch your progress move forward.",
+      "Saving for something? Set a goal and watch your progress grow every time you save.",
   },
   {
     icon: CreditCard,
-    title: "Debt & Lent Money",
+    title: "Debt & lent money",
     description:
-      "Track what you owe and what others owe you. Manage debts and lent money in one place, with clear repayment records.",
+      "Track what you owe and what people owe you, in one place, with clear repayment records.",
   },
   {
     icon: Brain,
-    title: "AlloCat AI",
+    title: "Ask AlloCat AI",
     description:
-      "Talk to your finances. The built-in AI assistant has access to your real data and can answer questions, spot patterns, and suggest actions.",
+      "Have a question about your money? Ask AlloCat AI. It looks at your real numbers and gives you a real answer.",
   },
 ];
 
-// Swappable placeholders — regenerated from the running Neo·Lime app.
+// Swappable placeholders, regenerated from the running Neo·Lime app.
 const featureImages = [
-  "/budget.png", // Budget Management
-  "/dashboard.png", // Quick Spend Logging
-  "/netWorth.png", // Net Worth Tracking
-  "/fingoals.png", // Financial Goals
-  "/dept.png", // Debt & Lent Money
-  "/ai.png", // AlloCat AI
+  "/budget.png", // Budget every rupee
+  "/sms-pending.png", // Spends notice themselves
+  "/netWorth.png", // Net worth, tracked
+  "/fingoals.png", // Goals that keep moving
+  "/debt.png", // Debt & lent money
+  "/ai.png", // Ask AlloCat AI
 ];
 
 const FeaturesSection = () => {
@@ -71,13 +71,13 @@ const FeaturesSection = () => {
         <motion.div {...fadeUp} className="mb-16 text-center md:mb-20">
           <SectionBadge className="mb-6">Features</SectionBadge>
           <h2 className="t-display-lg mb-4 text-foreground">
-            Everything you need to
+            Give every rupee
             <br />
-            <span className="text-muted-foreground">master your money</span>
+            <span className="text-muted-foreground">a job</span>
           </h2>
           <p className="t-body mx-auto max-w-lg text-muted-foreground">
-            From auto-logged SMS spends to AI-powered insights — AlloCat is your complete,
-            distraction-free financial companion.
+            Budget your income once a month. AlloCat keeps track of the rest, from spends to net
+            worth to goals.
           </p>
         </motion.div>
 

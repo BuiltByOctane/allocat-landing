@@ -18,8 +18,7 @@ const FOOTER_LINKS = {
   ],
   Resources: [
     { label: "Get on Google Play", href: PLAY_STORE_URL },
-    { label: "Privacy", href: "#" },
-    { label: "Terms", href: "#" },
+    { label: "Privacy", href: "https://allocat.xyz/legal/privacy-policy" },
   ],
 };
 
@@ -51,9 +50,9 @@ const Footer = () => {
         {/* CTA section */}
         <div className="mb-16 px-4 text-center md:mb-24">
           <h2 className="t-display-lg mb-4 text-foreground">
-            Start for free at
+            Start for free
             <br />
-            <span className="gradient-text">allocat.xyz</span>
+            <span className="gradient-text">today</span>
           </h2>
           <p className="t-body mx-auto mb-8 max-w-md text-muted-foreground">
             Free to start. No credit card required.
@@ -79,7 +78,8 @@ const Footer = () => {
                 </span>
               </a>
               <p className="t-body mb-6 max-w-xs text-muted-foreground">
-                A private, offline-first personal finance app. Plan your money. Live your life.
+                A private personal finance app that helps you budget every rupee. Plan your money.
+                Live your life.
               </p>
               <a
                 href={PLAY_STORE_URL}

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { ShieldCheck, WifiOff } from "lucide-react";
+import { BellRing, ShieldCheck } from "lucide-react";
 import LimeCard from "@/components/neo/LimeCard";
 import Chip from "@/components/neo/Chip";
 import { DownloadCTA } from "@/components/DownloadCTA";
@@ -55,8 +55,8 @@ const HeroSection = (_props: HeroSectionProps) => {
           className="hero-tagline t-display-hero mb-5 max-w-2xl text-balance text-foreground opacity-0"
           style={{ willChange: "opacity, transform, filter" }}
         >
-          Plan your money.{" "}
-          <span className="gradient-text">Live your life.</span>
+          Ever wonder where{" "}
+          <span className="gradient-text">all your money went?</span>
         </h1>
 
         {/* Sub */}
@@ -64,8 +64,9 @@ const HeroSection = (_props: HeroSectionProps) => {
           className="hero-sub t-body mb-9 max-w-xl text-muted-foreground opacity-0"
           style={{ willChange: "opacity, transform, filter" }}
         >
-          An offline-first finance app. Budgets, net worth, goals, debt — and SMS spends that log
-          themselves. Free to start, no card required.
+          Budget your income at the start of the month and give every rupee a job. AlloCat then
+          notices your UPI and card spends automatically and helps you put them where they
+          belong. Free to start, no card required.
         </p>
 
         {/* CTAs */}
@@ -83,26 +84,18 @@ const HeroSection = (_props: HeroSectionProps) => {
         >
           <LimeCard className="flex flex-1 flex-col items-start justify-center gap-2 p-5 text-left">
             <span className="figure text-[38px] leading-none">100%</span>
-            <span className="t-label leading-[1.3] text-accent-ink/70">On-device<br />&amp; private</span>
+            <span className="t-label leading-[1.3] text-accent-ink/70"> On-device<br />&amp; private</span>
           </LimeCard>
           <div className="flex flex-1 flex-col gap-3">
             <div className="flex flex-1 items-center gap-2.5 rounded-stat border border-border bg-card px-4">
-              <WifiOff className="h-4 w-4 text-foreground" />
-              <span className="text-[13px] font-bold text-foreground">Works offline</span>
+              <BellRing className="h-4 w-4 text-foreground" />
+              <span className="text-[13px] font-bold text-foreground">Notices spends for you</span>
             </div>
             <div className="flex flex-1 items-center gap-2.5 rounded-stat border border-border bg-card px-4">
               <ShieldCheck className="h-4 w-4 text-foreground" />
               <span className="text-[13px] font-bold text-foreground">No ads, no tracking</span>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="hero-cta absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 opacity-0">
-        <span className="t-label text-muted-foreground/70">Scroll</span>
-        <div className="relative h-10 w-px overflow-hidden bg-border">
-          <div className="absolute h-2 w-full animate-scroll-down bg-accent-strong" />
         </div>
       </div>
     </section>

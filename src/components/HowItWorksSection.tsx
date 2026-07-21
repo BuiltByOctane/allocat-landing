@@ -9,21 +9,21 @@ const steps = [
     number: "01",
     title: "Sign Up",
     description:
-      "Create your free account with just an email or Google. No credit card needed — start in seconds.",
+      "Create your free account with just an email or Google. No credit card needed, start in seconds.",
   },
   {
     icon: LayoutDashboard,
     number: "02",
-    title: "Set Up Your Finances",
+    title: "Set up your budget",
     description:
-      "Set a budget, add categories and your currency, and let SMS auto-logging capture spends for you on Android.",
+      "Split your income into budgets for the month. On Android, turn on auto-detect so spends start filing themselves.",
   },
   {
     icon: Sparkles,
     number: "03",
     title: "Talk to AlloCat AI",
     description:
-      "Ask your AI assistant anything about your spending. Get real, data-backed answers drawn from your actual financial data.",
+      "Ask your AI assistant anything about your spending. Get real answers drawn from your own numbers.",
   },
 ];
 

@@ -6,6 +6,7 @@ import {
   Sparkles,
   MessageSquareText,
   ArrowRight,
+  BellRing,
 } from "lucide-react";
 import { fadeUp } from "@/lib/motionVariants";
 import SectionBadge from "@/components/neo/SectionBadge";
@@ -17,22 +18,22 @@ const pillars = [
   {
     icon: Cpu,
     title: "On-device",
-    body: "Transaction SMS are parsed locally with regex — no servers, no LLM, no upload.",
+    body: "Your transaction SMS is read and understood right there on your phone. No server ever sees the message.",
   },
   {
     icon: ShieldCheck,
-    title: "Privacy-first",
-    body: "Only the amount, date and a hashed merchant key sync. The raw message never leaves your phone.",
+    title: "Private by design",
+    body: "Only the amount, date, and merchant get saved. The SMS itself is never stored or sent anywhere.",
   },
   {
     icon: Sparkles,
-    title: "Merchant-learning",
-    body: "Categorize a merchant once and AlloCat remembers — repeats log silently, even when the app is closed.",
+    title: "Learns your merchants",
+    body: "Teach AlloCat a merchant once. Next time, it puts the spend in the right budget on its own.",
   },
   {
-    icon: Smartphone,
-    title: "Android",
-    body: "Ships in the native Android app. Uses RECEIVE_SMS only — your inbox is never read.",
+    icon: BellRing,
+    title: "Budget alerts",
+    body: "If a budget is about to run out, or already has, AlloCat tells you right away.",
   },
 ];
 
@@ -51,28 +52,29 @@ const SmsSection = () => (
           New · Android
         </SectionBadge>
         <h2 className="t-display-lg mb-4 text-foreground">
-          Spends that
+          How the auto-detect
           <br />
-          <span className="gradient-text">log themselves</span>
+          <span className="gradient-text">actually works</span>
         </h2>
         <p className="t-body text-muted-foreground">
-          AlloCat reads transaction SMS on your Android device and turns them into categorized
-          spends automatically — entirely on-device. Nothing is uploaded. It learns your merchants
-          over time, so the more you use it, the smarter it gets.
+          When your bank or UPI app sends a transaction SMS, AlloCat reads it right there on your
+          phone. Nothing is uploaded. Allocate it in one tap, or let AlloCat do it for you once it
+          knows the merchant.
         </p>
       </motion.div>
 
       <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left: phone mockup + flow */}
         <motion.div {...fadeUp} className="flex flex-col items-center gap-8">
-          <PhoneMockup src="/budget.png" alt="Spends auto-categorized into your AlloCat budget" width="290px" />
+          <PhoneMockup src="/sms-pending.png" alt="Pending transactions ready to allocate to a budget" width="290px" />
 
           {/* On-device flow strip */}
           <div className="flex w-full max-w-sm items-center justify-between gap-2 text-center">
             {[
               { icon: MessageSquareText, label: "SMS arrives" },
-              { icon: Cpu, label: "Parsed on-device" },
-              { icon: Sparkles, label: "Auto-categorized" },
+              { icon: Cpu, label: "Read on your phone" },
+              { icon: Sparkles, label: "You allocate it" },
+              { icon: BellRing, label: "Notified if low" },
             ].map((step, i, arr) => (
               <div key={step.label} className="flex flex-1 items-center gap-2">
                 <div className="flex flex-1 flex-col items-center gap-2">
@@ -98,11 +100,10 @@ const SmsSection = () => (
                 <Smartphone className="h-5 w-5 text-accent-ink/70" />
               </div>
               <p className="t-title max-w-sm text-accent-ink">
-                Your messages never leave your phone.
+                Your bank SMS never leaves your phone.
               </p>
               <p className="mt-2 text-[13px] font-medium text-accent-ink/80">
-                Parsing happens locally — no servers, no tracking. Only debits are tracked; credits
-                are ignored.
+                It's read locally, not uploaded. Only debits are tracked, credits are ignored.
               </p>
             </LimeCard>
           </motion.div>

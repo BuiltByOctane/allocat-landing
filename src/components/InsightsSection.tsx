@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import {
-  TrendingUp,
+  BellRing,
   TrendingDown,
   Lightbulb,
   ShieldCheck,
@@ -13,10 +13,10 @@ import SectionBadge from "@/components/neo/SectionBadge";
 
 const insights = [
   {
-    icon: TrendingUp,
+    icon: BellRing,
     tone: "neg" as const,
-    title: "Spending Alert",
-    message: "You spent 30% more on food this week compared to your average.",
+    title: "Budget Running Low",
+    message: "Your Food budget has ₹500 left, with 10 days to go in the month.",
   },
   {
     icon: TrendingDown,
@@ -46,7 +46,7 @@ const insights = [
     icon: ShieldCheck,
     tone: "pos" as const,
     title: "Budget Shield",
-    message: "Great job! You stayed within budget for Travel — 3 months running.",
+    message: "Great job! You stayed within budget for Travel, 3 months running.",
   },
 ];
 
@@ -71,13 +71,13 @@ const InsightsSection = () => (
           AI-Powered
         </SectionBadge>
         <h2 className="t-display-lg mb-4 text-foreground">
-          Insights that
+          Budgeting is the core.
           <br />
-          <span className="text-muted-foreground">actually help</span>
+          <span className="text-muted-foreground">Here's what else you get.</span>
         </h2>
         <p className="t-body mx-auto max-w-lg text-muted-foreground">
-          AlloCat AI reads your real financial data and surfaces patterns, alerts, and suggestions —
-          not generic advice.
+          AlloCat also keeps an eye on the bigger picture and answers your questions when you need
+          it.
         </p>
       </motion.div>
 
