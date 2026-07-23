@@ -95,7 +95,7 @@ const FeaturesSection = () => {
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -14, filter: "blur(6px)" }}
                   transition={{ duration: 0.45, ease: "easeOut" }}
-                  className="absolute inset-0 h-full w-full object-cover object-top"
+                  className="absolute inset-0 h-full w-full object-top"
                 />
               </AnimatePresence>
             </PhoneMockup>

@@ -34,7 +34,7 @@ const PhoneMockup = ({
     style={{ width, aspectRatio: ratio }}
   >
     {/* Dynamic island / notch */}
-    <div className="absolute left-1/2 top-3 z-20 h-5 w-20 -translate-x-1/2 rounded-full bg-black" />
+    {/* <div className="absolute left-1/2 top-3 z-20 h-5 w-20 -translate-x-1/2 rounded-full bg-black" /> */}
 
     <div className="absolute inset-0 overflow-hidden rounded-[2.25rem]">
       {children ?? (
