@@ -13,4 +13,4 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-Sitemap: https://grow.allocat.app/sitemap.xml
+Sitemap: https://grow.allocat.xyz/sitemap.xml
