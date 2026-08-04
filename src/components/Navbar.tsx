@@ -7,7 +7,7 @@ const NAV_LINKS = [
   { label: "Features", target: "features" },
   { label: "SMS Auto-Log", target: "sms" },
   { label: "How It Works", target: "how-it-works" },
-  { label: "Pricing", target: "pricing" },
+  { label: "Why free", target: "support" },
 ];
 
 const Navbar = () => {

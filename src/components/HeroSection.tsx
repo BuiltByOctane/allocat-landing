@@ -66,7 +66,7 @@ const HeroSection = (_props: HeroSectionProps) => {
         >
           Budget your income at the start of the month and give every rupee a job. AlloCat then
           notices your UPI and card spends automatically and helps you put them where they
-          belong. Free to start, no card required.
+          belong. Completely free: no trial, no card, no catch.
         </p>
 
         {/* CTAs */}

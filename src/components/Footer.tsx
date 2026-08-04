@@ -8,7 +8,7 @@ const FOOTER_LINKS = {
     { label: "Features", href: "#features" },
     { label: "SMS Auto-Log", href: "#sms" },
     { label: "How It Works", href: "#how-it-works" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Why it's free", href: "#support" },
   ],
   Features: [
     { label: "Budgets & categories", href: "#features" },
@@ -50,12 +50,12 @@ const Footer = () => {
         {/* CTA section */}
         <div className="mb-16 px-4 text-center md:mb-24">
           <h2 className="t-display-lg mb-4 text-foreground">
-            Start for free
+            Free. Forever.
             <br />
-            <span className="gradient-text">today</span>
+            <span className="gradient-text">Start today</span>
           </h2>
           <p className="t-body mx-auto mb-8 max-w-md text-muted-foreground">
-            Free to start. No credit card required.
+            No card, no trial, no catch. Every feature, on every account.
           </p>
           <div className="inline-flex flex-col justify-center gap-4 sm:flex-row">
             <DownloadCTA size="lg" />
