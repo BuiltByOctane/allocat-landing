@@ -6,6 +6,7 @@ import LimeCard from "@/components/neo/LimeCard";
 import { PillButton } from "@/components/neo/PillButton";
 import { AppStoreButton } from "@/components/DownloadCTA";
 import { KOFI_URL } from "@/lib/links";
+import { trackClick } from "@/lib/track";
 
 const includedFeatures = [
   "Smart budgets & categories",
@@ -109,7 +110,12 @@ const SupportSection = () => (
               ))}
             </ul>
             <PillButton variant="lime" size="lg" asChild>
-              <a href={KOFI_URL} target="_blank" rel="noopener noreferrer">
+              <a
+                href={KOFI_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackClick("cta_kofi_click")}
+              >
                 <Heart className="h-4 w-4" /> Support on Ko-fi
               </a>
             </PillButton>

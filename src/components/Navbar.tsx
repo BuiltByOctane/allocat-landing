@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { PillButton } from "@/components/neo/PillButton";
 import ThemeToggle from "@/components/ThemeToggle";
 import { LOGIN_URL } from "@/lib/links";
+import { track, trackClick } from "@/lib/track";
 
 const NAV_LINKS = [
   { label: "Features", target: "features" },
@@ -69,7 +70,12 @@ const Navbar = () => {
           <div className="hidden items-center gap-2.5 md:flex">
             <ThemeToggle />
             <PillButton asChild variant="lime" size="sm">
-              <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
+              <a
+                href={LOGIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackClick("cta_login_click")}
+              >
                 Try AlloCat
               </a>
             </PillButton>
@@ -109,7 +115,10 @@ const Navbar = () => {
                 href={LOGIN_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  track("cta_login_click");
+                  setMobileOpen(false);
+                }}
               >
                 Try AlloCat
               </a>

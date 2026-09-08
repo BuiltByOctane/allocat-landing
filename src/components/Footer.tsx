@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { DownloadCTA, PlayIcon } from "@/components/DownloadCTA";
 import { PLAY_STORE_URL } from "@/lib/links";
+import { track, trackClick } from "@/lib/track";
 
 const FOOTER_LINKS = {
   Product: [
@@ -85,6 +86,7 @@ const Footer = () => {
                 href={PLAY_STORE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={trackClick("cta_play_click")}
                 className="text-muted-foreground transition-colors hover:text-foreground"
                 aria-label="Get it on Google Play"
               >
@@ -103,6 +105,11 @@ const Footer = () => {
                         href={link.href}
                         target={link.href.startsWith("http") ? "_blank" : undefined}
                         rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        onClick={
+                          link.href === PLAY_STORE_URL
+                            ? () => track("cta_play_click")
+                            : undefined
+                        }
                         className="text-sm text-muted-foreground transition-colors hover:text-foreground"
                       >
                         {link.label}

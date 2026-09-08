@@ -6,6 +6,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { useLenis } from "@/hooks/useLenis";
+import { useEffect } from "react";
+import { trackPageViewOnce } from "@/lib/track";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -14,6 +16,8 @@ const queryClient = new QueryClient();
 // Root layout: all app-wide providers, plus Lenis smooth scroll, wrap whichever route matched.
 const Layout = () => {
   useLenis();
+  // One anonymous page_view per browser session (see src/lib/track.ts).
+  useEffect(trackPageViewOnce, []);
 
   return (
     <QueryClientProvider client={queryClient}>

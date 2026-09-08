@@ -3,6 +3,7 @@ import { ArrowRight, Share, Plus, X } from "lucide-react";
 import { PillButton } from "@/components/neo/PillButton";
 import { usePlatform } from "@/hooks/use-platform";
 import { LOGIN_URL, PLAY_STORE_URL } from "@/lib/links";
+import { track, trackClick } from "@/lib/track";
 
 type Size = "sm" | "md" | "lg";
 
@@ -25,7 +26,12 @@ const PlayStoreButton = ({
   className?: string;
 }) => (
   <PillButton asChild variant={variant} size={size} className={className}>
-    <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer">
+    <a
+      href={PLAY_STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={trackClick("cta_play_click")}
+    >
       <PlayIcon className="h-4 w-4" /> {label}
     </a>
   </PillButton>
@@ -55,7 +61,12 @@ const IosInstallButton = ({
         variant={variant}
         size={size}
         className={className}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          setOpen((v) => {
+            if (!v) track("pwa_ios_help");
+            return !v;
+          });
+        }}
         aria-expanded={open}
       >
         <Share className="h-4 w-4" /> {label}
@@ -93,7 +104,12 @@ const IosInstallButton = ({
             </li>
           </ol>
           <PillButton asChild variant="lime" size="md" className="mt-4 w-full">
-            <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
+            <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackClick("cta_login_click")}
+            >
               Open AlloCat <ArrowRight className="h-4 w-4" />
             </a>
           </PillButton>
@@ -141,7 +157,12 @@ export const DownloadCTA = ({ size = "lg" }: { size?: Size }) => {
       <>
         <PlayStoreButton variant="lime" size={size} />
         <PillButton asChild variant="outline" size={size}>
-          <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
+          <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackClick("cta_login_click")}
+            >
             Open in browser <ArrowRight className="h-4 w-4" />
           </a>
         </PillButton>
@@ -154,7 +175,12 @@ export const DownloadCTA = ({ size = "lg" }: { size?: Size }) => {
       <>
         <IosInstallButton variant="lime" size={size} />
         <PillButton asChild variant="outline" size={size}>
-          <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
+          <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackClick("cta_login_click")}
+            >
             Open in browser <ArrowRight className="h-4 w-4" />
           </a>
         </PillButton>
@@ -166,7 +192,12 @@ export const DownloadCTA = ({ size = "lg" }: { size?: Size }) => {
   return (
     <>
       <PillButton asChild variant="lime" size={size}>
-        <a href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
+        <a
+              href={LOGIN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackClick("cta_login_click")}
+            >
           Try AlloCat <ArrowRight className="h-4 w-4" />
         </a>
       </PillButton>
