@@ -18,7 +18,7 @@ const WhyFree = () => {
       <Seo
         path="/why-free"
         title="Why AlloCat is free"
-        description="Two years of envelope budgeting in a Google Sheet, and the manual logging that broke it. Why AlloCat exists, why it's free today, and how early users lock founding-member pricing."
+        description="Two years of envelope budgeting in Google Keep notes, and the manual logging that broke it. Why AlloCat exists, why it's free today, and how early users lock founding-member pricing."
       />
       <Navbar />
       <main>

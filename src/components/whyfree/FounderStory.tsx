@@ -12,12 +12,12 @@ const FounderStory = () => (
 
       <div className="space-y-6 text-[17px] leading-relaxed text-foreground/85 md:text-[18px]">
         <p>
-          For two years I ran my money the envelope way, in a Google Sheet. On payday every rupee got a job: rent,
+          For two years I ran my money the envelope way, in Google Keep notes. On payday every rupee got a job: rent,
           groceries, savings, fun. When an envelope ran dry, that spending stopped. It worked.
         </p>
         <p>
           Except for the logging. Every UPI payment and every card swipe had to be typed in by hand. Miss a few days
-          and the sheet stopped telling the truth. By month end I&apos;d be staring at it asking the same question:{" "}
+          and the notes stopped telling the truth. By month end I&apos;d be staring at them asking the same question:{" "}
           <em className="font-semibold text-foreground">where did it actually go?</em>
         </p>
         <p>

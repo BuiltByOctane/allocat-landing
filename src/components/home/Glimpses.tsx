@@ -43,7 +43,7 @@ const Glimpses = () => {
               </span>
               <h3 className="t-title mb-2">Why I built it, and why it&apos;s free</h3>
               <p className="t-body mb-6 flex-1 opacity-85">
-                &ldquo;Two years of envelope budgeting in a Google Sheet. The method worked. The logging didn&apos;t.&rdquo;
+                &ldquo;Two years of envelope budgeting in Google Keep notes. The method worked. The logging didn&apos;t.&rdquo;
                 Free today, and early users lock founding-member pricing.
               </p>
               <span className="inline-flex items-center gap-2 text-[14px] font-bold">
