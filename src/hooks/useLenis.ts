@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Lenis from "lenis";
-import gsap from "gsap";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 export function useLenis() {
   const lenisRef = useRef<Lenis | null>(null);
@@ -14,13 +14,15 @@ export function useLenis() {
 
     lenisRef.current = lenis;
 
-    // Hook into GSAP's ticker so ScrollTrigger stays in sync
-    gsap.ticker.add((time) => {
-      lenis.raf(time * 1000);
-    });
+    // Pinned/scrubbed story scenes read scroll position from ScrollTrigger, so it must
+    // see every Lenis frame, and Lenis must run on GSAP's ticker.
+    lenis.on("scroll", ScrollTrigger.update);
+    const raf = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      gsap.ticker.remove(raf);
       lenis.destroy();
       lenisRef.current = null;
     };

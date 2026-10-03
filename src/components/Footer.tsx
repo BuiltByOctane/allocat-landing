@@ -5,17 +5,17 @@ import { PLAY_STORE_URL } from "@/lib/links";
 import { track, trackClick } from "@/lib/track";
 
 const FOOTER_LINKS = {
-  Product: [
-    { label: "Features", href: "#features" },
-    { label: "SMS Auto-Log", href: "#sms" },
-    { label: "How It Works", href: "#how-it-works" },
-    { label: "Why it's free", href: "#support" },
+  AlloCat: [
+    { label: "How it works", href: "/#how-it-works" },
+    { label: "A month with AlloCat", href: "/story" },
+    { label: "Why it's free", href: "/why-free" },
+    { label: "FAQ", href: "/why-free#faq" },
   ],
   Features: [
-    { label: "Budgets & categories", href: "#features" },
-    { label: "Net worth & goals", href: "#features" },
-    { label: "Debt & lent money", href: "#features" },
-    { label: "AlloCat AI", href: "#insights" },
+    { label: "Budgets", href: "/story#story" },
+    { label: "SMS spend tracking", href: "/story#sms" },
+    { label: "Net worth & goals", href: "/story#picture" },
+    { label: "AlloCat AI", href: "/story#picture" },
   ],
   Resources: [
     { label: "Get on Google Play", href: PLAY_STORE_URL },
@@ -69,7 +69,7 @@ const Footer = () => {
           <div className="mb-16 grid grid-cols-2 gap-10 border-t border-border pt-12 md:grid-cols-5">
             {/* Logo column */}
             <div className="col-span-2">
-              <a href="#hero" className="group mb-4 flex w-fit items-center gap-2.5">
+              <a href="/" className="group mb-4 flex w-fit items-center gap-2.5">
                 <img
                   src="/allocat.png"
                   alt="AlloCat"

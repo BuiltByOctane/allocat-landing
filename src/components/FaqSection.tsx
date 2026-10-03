@@ -1,6 +1,7 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { fadeUp } from "@/lib/motionVariants";
-import SectionBadge from "@/components/neo/SectionBadge";
+import { useBeat } from "@/components/story/StoryContext";
 import {
   Accordion,
   AccordionContent,
@@ -35,21 +36,29 @@ const faqs = [
   },
 ];
 
-const FaqSection = () => (
-  <section id="faq" className="bg-background py-20 md:py-32">
+/** Questions shown on the brief home page; /why-free shows them all. */
+const SHORT = new Set([
+  "Is it really free?",
+  "Is my bank SMS data safe?",
+  "Will there be a paid version?",
+  "What is a founding member?",
+]);
+
+const FaqSection = ({ short = false }: { short?: boolean }) => {
+  const items = short ? faqs.filter((f) => SHORT.has(f.q)) : faqs;
+  const ref = useRef<HTMLElement>(null);
+  useBeat(null, ref);
+
+  return (
+  <section id="faq" ref={ref} className="bg-background py-20 md:py-32">
     <div className="mx-auto max-w-[820px] px-6 md:px-10 lg:px-16">
       <motion.div {...fadeUp} className="mb-10 text-center md:mb-14">
-        <SectionBadge className="mb-6">FAQ</SectionBadge>
-        <h2 className="t-display-lg mb-4 text-foreground">
-          The obvious questions.
-          <br />
-          <span className="text-muted-foreground">Answered plainly.</span>
-        </h2>
+        <h2 className="t-display-lg mb-4 text-balance text-foreground">The obvious questions, answered plainly.</h2>
       </motion.div>
 
       <motion.div {...fadeUp}>
         <Accordion type="single" collapsible className="w-full">
-          {faqs.map(({ q, a }) => (
+          {items.map(({ q, a }) => (
             <AccordionItem key={q} value={q} className="border-border">
               <AccordionTrigger className="t-heading text-left text-foreground hover:no-underline">
                 {q}
@@ -61,6 +70,7 @@ const FaqSection = () => (
       </motion.div>
     </div>
   </section>
-);
+  );
+};
 
 export default FaqSection;

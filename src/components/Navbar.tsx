@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { PillButton } from "@/components/neo/PillButton";
 import ThemeToggle from "@/components/ThemeToggle";
 import { LOGIN_URL } from "@/lib/links";
 import { track, trackClick } from "@/lib/track";
 
+/** `to` is a route, optionally with an anchor ("/#how-it-works"). */
 const NAV_LINKS = [
-  { label: "Features", target: "features" },
-  { label: "SMS Auto-Log", target: "sms" },
-  { label: "How It Works", target: "how-it-works" },
-  { label: "Why free", target: "support" },
+  { label: "How it works", to: "/#how-it-works" },
+  { label: "The story", to: "/story" },
+  { label: "Why free", to: "/why-free" },
 ];
 
 const Navbar = () => {
@@ -21,10 +22,19 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleNav = (target: string) => {
+  const { pathname } = useLocation();
+  const navigate = useNavigate();
+
+  const handleNav = (to: string) => {
     setMobileOpen(false);
-    const el = document.getElementById(target);
-    el?.scrollIntoView({ behavior: "smooth" });
+    const [path, anchor] = to.split("#");
+    const target = path || "/";
+    if (target === pathname) {
+      if (anchor) document.getElementById(anchor)?.scrollIntoView({ behavior: "smooth" });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    navigate(to);
   };
 
   return (
@@ -44,7 +54,7 @@ const Navbar = () => {
         >
           {/* Logo */}
           <button
-            onClick={() => handleNav("hero")}
+            onClick={() => handleNav("/")}
             className="flex items-center gap-2.5 pl-2 transition-opacity hover:opacity-70"
           >
             <img src="/allocat.png" alt="AlloCat" className="h-7 w-7 dark:invert" />
@@ -58,7 +68,7 @@ const Navbar = () => {
             {NAV_LINKS.map((link) => (
               <button
                 key={link.label}
-                onClick={() => handleNav(link.target)}
+                onClick={() => handleNav(link.to)}
                 className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
@@ -68,7 +78,7 @@ const Navbar = () => {
 
           {/* Desktop CTAs */}
           <div className="hidden items-center gap-2.5 md:flex">
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <PillButton asChild variant="lime" size="sm">
               <a
                 href={LOGIN_URL}
@@ -83,7 +93,7 @@ const Navbar = () => {
 
           {/* Mobile controls */}
           <div className="flex items-center gap-2 md:hidden">
-            <ThemeToggle />
+            {/* <ThemeToggle /> */}
             <button
               className="flex flex-col gap-1.5 p-2"
               onClick={() => setMobileOpen(!mobileOpen)}
@@ -103,7 +113,7 @@ const Navbar = () => {
           {NAV_LINKS.map((link) => (
             <button
               key={link.label}
-              onClick={() => handleNav(link.target)}
+              onClick={() => handleNav(link.to)}
               className="font-display text-2xl font-bold text-foreground transition-colors hover:text-muted-foreground"
             >
               {link.label}

@@ -1,7 +1,8 @@
+import { useRef } from "react";
 import { motion } from "framer-motion";
 import { Check, Crown, Server, Sparkles, ShieldCheck } from "lucide-react";
 import { fadeUp } from "@/lib/motionVariants";
-import SectionBadge from "@/components/neo/SectionBadge";
+import { useBeat } from "@/components/story/StoryContext";
 import LimeCard from "@/components/neo/LimeCard";
 import { AppStoreButton } from "@/components/DownloadCTA";
 
@@ -35,17 +36,17 @@ const costs = [
   },
 ];
 
-const SupportSection = () => (
-  <section id="support" className="bg-background py-20 md:py-32">
+const SupportSection = () => {
+  const ref = useRef<HTMLElement>(null);
+  useBeat(null, ref);
+
+  return (
+  <section id="support" ref={ref} className="border-t border-border bg-background py-20 md:py-32">
     <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16">
       {/* Header */}
       <motion.div {...fadeUp} className="mb-12 text-center md:mb-16">
-        <SectionBadge className="mb-6">Why it&apos;s free</SectionBadge>
-        <h2 className="t-display-lg mb-4 text-foreground">
-          Everything, free.
-          <br />
-          <span className="text-muted-foreground">Not the trial kind.</span>
-        </h2>
+        <p className="mb-5 text-[14px] font-semibold text-muted-foreground">So what does it cost?</p>
+        <h2 className="t-display-lg mb-4 text-balance text-foreground">Nothing. Not the trial kind of nothing.</h2>
         <p className="t-body mx-auto max-w-lg text-muted-foreground">
           No trial countdown, no locked features. Every account gets the whole app, and
           what you use today stays free.
@@ -135,6 +136,7 @@ const SupportSection = () => (
       </motion.p>
     </div>
   </section>
-);
+  );
+};
 
 export default SupportSection;

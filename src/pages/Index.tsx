@@ -1,73 +1,42 @@
-import { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import FeaturesSection from "@/components/FeaturesSection";
-import SmsSection from "@/components/SmsSection";
-import HowItWorksSection from "@/components/HowItWorksSection";
-import InsightsSection from "@/components/InsightsSection";
-import SupportSection from "@/components/SupportSection";
+import Seo from "@/components/Seo";
+import PaydayHero from "@/components/story/PaydayHero";
+import HowItWorks from "@/components/home/HowItWorks";
+import Glimpses from "@/components/home/Glimpses";
 import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
+import { useHeroReveal } from "@/hooks/useHeroReveal";
 
+/**
+ * Home is deliberately brief: what it is, how it works, is it safe and free, download.
+ * The long-form month story lives at /story and the founder note at /why-free.
+ */
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [revealed, setRevealed] = useState(false);
-  const revealedRef = useRef(false);
+  const { revealed, reveal } = useHeroReveal();
 
   const handleLoadComplete = () => {
     setIsLoading(false);
-    if (revealedRef.current) return;
-    revealedRef.current = true;
-    setRevealed(true);
-
-    // Staggered page-reveal timeline after loading screen exits
-    const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
-
-    // Navbar slides down
-    tl.fromTo(
-      "#main-nav",
-      { y: -60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7 }
-    );
-
-    // Hero logo + brand
-    tl.fromTo(
-      ".hero-logo, .hero-brand",
-      { y: 40, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, duration: 1, stagger: 0.1 },
-      "-=0.3"
-    );
-
-    // Tagline + sub — blur-in
-    tl.fromTo(
-      ".hero-tagline, .hero-sub",
-      { y: 20, opacity: 0, filter: "blur(8px)" },
-      { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.9, stagger: 0.12 },
-      "-=0.5"
-    );
-
-    // CTAs + scroll indicator
-    tl.fromTo(
-      ".hero-cta",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7, stagger: 0.1 },
-      "-=0.4"
-    );
+    reveal();
   };
 
   return (
     <>
+      <Seo
+        path="/"
+        title="AlloCat: Budget Every Rupee, Automatically"
+        description="AlloCat is a free personal finance app. Budget your income on payday, then let AlloCat notice your UPI and card spends from bank SMS, right on your phone, and help you allocate them. No ads."
+      />
       {isLoading && <LoadingScreen onComplete={handleLoadComplete} />}
       <Navbar />
-      <HeroSection revealed={revealed} />
-      <FeaturesSection />
-      <SmsSection />
-      <HowItWorksSection />
-      <InsightsSection />
-      <SupportSection />
-      <FaqSection />
+      <main>
+        <PaydayHero revealed={revealed} followHref="#how-it-works" followLabel="How it works" />
+        <HowItWorks />
+        <Glimpses />
+        <FaqSection short />
+      </main>
       <Footer />
     </>
   );
