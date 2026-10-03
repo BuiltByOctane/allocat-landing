@@ -2,7 +2,7 @@ import { useState } from "react";
 import LoadingScreen from "@/components/LoadingScreen";
 import Navbar from "@/components/Navbar";
 import Seo from "@/components/Seo";
-import PaydayHero from "@/components/story/PaydayHero";
+import HomeHero from "@/components/home/HomeHero";
 import HowItWorks from "@/components/home/HowItWorks";
 import Glimpses from "@/components/home/Glimpses";
 import FaqSection from "@/components/FaqSection";
@@ -32,7 +32,7 @@ const Index = () => {
       {isLoading && <LoadingScreen onComplete={handleLoadComplete} />}
       <Navbar />
       <main>
-        <PaydayHero revealed={revealed} followHref="#how-it-works" followLabel="How it works" />
+        <HomeHero revealed={revealed} />
         <HowItWorks />
         <Glimpses />
         <FaqSection short />

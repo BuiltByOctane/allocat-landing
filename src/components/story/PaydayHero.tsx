@@ -9,16 +9,7 @@ import { BEATS, MONTH_DAYS } from "./beats";
  * Day 1. The page opens on payday: the salary credit, counted in.
  * `.hero-*` classes are animated in by the reveal timeline in pages/Index.tsx.
  */
-const PaydayHero = ({
-  revealed,
-  followHref = "#leak",
-  followLabel = "Follow the month",
-}: {
-  revealed: boolean;
-  /** Where the bottom arrow goes: the next chapter on /story, the story page from home. */
-  followHref?: string;
-  followLabel?: string;
-}) => {
+const PaydayHero = ({ revealed }: { revealed: boolean }) => {
   const ref = useRef<HTMLElement>(null);
   useBeat("hero", ref);
 
@@ -95,10 +86,10 @@ const PaydayHero = ({
       </div>
 
       <a
-        href={followHref}
+        href="#leak"
         className="hero-cta absolute bottom-8 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[13px] font-semibold text-muted-foreground opacity-0 transition-colors hover:text-foreground"
       >
-        <ArrowDown className="h-4 w-4" /> {followLabel}
+        <ArrowDown className="h-4 w-4" /> Follow the month
       </a>
     </section>
   );
