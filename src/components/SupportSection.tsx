@@ -1,12 +1,9 @@
 import { motion } from "framer-motion";
-import { Check, Heart, Server, Sparkles, ShieldCheck } from "lucide-react";
+import { Check, Crown, Server, Sparkles, ShieldCheck } from "lucide-react";
 import { fadeUp } from "@/lib/motionVariants";
 import SectionBadge from "@/components/neo/SectionBadge";
 import LimeCard from "@/components/neo/LimeCard";
-import { PillButton } from "@/components/neo/PillButton";
 import { AppStoreButton } from "@/components/DownloadCTA";
-import { KOFI_URL } from "@/lib/links";
-import { trackClick } from "@/lib/track";
 
 const includedFeatures = [
   "Smart budgets & categories",
@@ -50,8 +47,8 @@ const SupportSection = () => (
           <span className="text-muted-foreground">Not the trial kind.</span>
         </h2>
         <p className="t-body mx-auto max-w-lg text-muted-foreground">
-          No plans, no trial countdown, no locked features. Every account gets the whole
-          app, and it stays that way.
+          No trial countdown, no locked features. Every account gets the whole app, and
+          what you use today stays free.
         </p>
       </motion.div>
 
@@ -65,7 +62,7 @@ const SupportSection = () => (
           <p className="t-body mb-6 text-muted-foreground">All of it, on every account.</p>
           <div className="mb-8 flex items-baseline gap-1">
             <span className="figure text-[44px] leading-none text-foreground">₹0</span>
-            <span className="t-label text-muted-foreground">/forever</span>
+            <span className="t-label text-muted-foreground">/no card, no trial</span>
           </div>
           <ul className="mb-8 flex-1 space-y-3.5">
             {includedFeatures.map((f) => (
@@ -78,7 +75,7 @@ const SupportSection = () => (
           <AppStoreButton variant="lime" size="lg" />
         </motion.div>
 
-        {/* Why, and the ask */}
+        {/* Why, and what's next */}
         <motion.div
           {...fadeUp}
           transition={{ duration: 0.9, ease: [0.25, 0.1, 0.25, 1] as const, delay: 0.1 }}
@@ -88,15 +85,14 @@ const SupportSection = () => (
             <h3 className="t-title mb-3">So how does this work?</h3>
             <p className="t-body opacity-85">
               AlloCat is built by one person who wanted a money app that didn&apos;t nag.
-              Charging for it would have made it exactly the thing I was trying to avoid,
-              so it&apos;s free. No ads, and your data is never sold or shared. Bank SMS
-              is read on your device and never leaves it.
+              It&apos;s free today, with no ads, and your data is never sold or shared.
+              Bank SMS is read on your device and never leaves it.
             </p>
           </LimeCard>
 
           <div className="flex flex-col rounded-card border border-border bg-card p-8 md:p-10">
             <h3 className="t-heading mb-5 text-foreground">What it costs to run</h3>
-            <ul className="mb-8 flex-1 space-y-5">
+            <ul className="flex-1 space-y-5">
               {costs.map(({ icon: Icon, title, body }) => (
                 <li key={title} className="flex items-start gap-3.5">
                   <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-tile bg-tile text-muted-foreground">
@@ -109,16 +105,22 @@ const SupportSection = () => (
                 </li>
               ))}
             </ul>
-            <PillButton variant="lime" size="lg" asChild>
-              <a
-                href={KOFI_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={trackClick("cta_kofi_click")}
-              >
-                <Heart className="h-4 w-4" /> Support on Ko-fi
-              </a>
-            </PillButton>
+          </div>
+
+          <div className="flex flex-col rounded-card border border-border bg-card p-8 md:p-10">
+            <div className="mb-3 flex items-center gap-3">
+              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-tile bg-tile text-accent-strong">
+                <Crown className="h-4 w-4" />
+              </span>
+              <h3 className="t-heading text-foreground">Premium is coming</h3>
+            </div>
+            <p className="t-body text-muted-foreground">
+              Keeping AlloCat running costs real money, so a Premium tier will arrive
+              eventually. It will add new things on top, never take away what&apos;s free.
+              Early users can claim{" "}
+              <span className="font-bold text-foreground">exclusive founding-member pricing</span>{" "}
+              in the app today. Claiming is free and costs nothing now.
+            </p>
           </div>
         </motion.div>
       </div>
@@ -128,8 +130,8 @@ const SupportSection = () => (
         {...fadeUp}
         className="mx-auto mt-12 max-w-xl text-center text-[13px] text-muted-foreground"
       >
-        Supporting is a tip, not a purchase. It unlocks nothing. Supporters get a small
-        thank-you badge and the same AlloCat as everyone else.
+        Founding spots are open for a limited time. Claim yours from the dashboard or the
+        &ldquo;Why AlloCat is free&rdquo; page in the app.
       </motion.p>
     </div>
   </section>

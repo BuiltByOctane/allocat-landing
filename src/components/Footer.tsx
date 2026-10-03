@@ -51,12 +51,13 @@ const Footer = () => {
         {/* CTA section */}
         <div className="mb-16 px-4 text-center md:mb-24">
           <h2 className="t-display-lg mb-4 text-foreground">
-            Free. Forever.
+            Free. No catch.
             <br />
             <span className="gradient-text">Start today</span>
           </h2>
           <p className="t-body mx-auto mb-8 max-w-md text-muted-foreground">
-            No card, no trial, no catch. Every feature, on every account.
+            No card, no trial. Every feature, on every account, and early users lock
+            founding-member pricing for Premium.
           </p>
           <div className="inline-flex flex-col justify-center gap-4 sm:flex-row">
             <DownloadCTA size="lg" />

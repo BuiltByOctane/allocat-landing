@@ -11,19 +11,19 @@ import {
 const faqs = [
   {
     q: "Is it really free?",
-    a: "Yes, all of it. Budgets, goals, assets, debts, reports, SMS auto-tracking and AlloCat AI are available on every account, with no caps and no trial clock. There is no paid tier to upgrade to.",
+    a: "Yes, all of it. Budgets, goals, assets, debts, reports, SMS auto-tracking and AlloCat AI are available on every account, with no caps and no trial clock. There is no paid tier today.",
   },
   {
-    q: "Then how do you make money?",
-    a: "I don't. AlloCat is a side project, not a business. Running it costs money: servers, the AI model, the Play developer account. I cover that myself. If people chip in on Ko-fi, that helps, but nothing depends on it.",
+    q: "Will there be a paid version?",
+    a: "Eventually, yes. Running AlloCat costs money: servers, the AI model, the Play developer account. A Premium tier will come later and add new features on top. Everything you can use today stays free, nothing gets moved behind a paywall.",
   },
   {
     q: "Will you add ads or sell my data?",
     a: "No. There are no ads and no trackers, and your financial data is never sold or shared. Ads would defeat the point of building a calm money app in the first place.",
   },
   {
-    q: "What does supporting actually get me?",
-    a: "A small thank-you badge in the app, and my genuine gratitude. That's it: no extra features, no higher limits, no early access. Supporting is a tip, not a purchase, and everyone uses the same AlloCat.",
+    q: "What is a founding member?",
+    a: "Early users can claim a founding-member spot in the app with one tap. It's free and costs nothing now. When Premium launches, founding members get exclusive founding-member pricing, and we'll let you know the moment it's live. Spots are open for a limited time.",
   },
   {
     q: "Is my bank SMS data safe?",

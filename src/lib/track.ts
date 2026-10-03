@@ -18,7 +18,6 @@ export type TrackEvent =
   | "page_view"
   | "cta_play_click"
   | "cta_login_click"
-  | "cta_kofi_click"
   | "pwa_ios_help";
 
 function platform(): string {
