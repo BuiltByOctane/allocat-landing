@@ -4,13 +4,14 @@ import Navbar from "@/components/Navbar";
 import Seo from "@/components/Seo";
 import HomeHero from "@/components/home/HomeHero";
 import HowItWorks from "@/components/home/HowItWorks";
+import DemoVideo from "@/components/home/DemoVideo";
 import Glimpses from "@/components/home/Glimpses";
 import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 import { useHeroReveal } from "@/hooks/useHeroReveal";
 
 /**
- * Home is deliberately brief: what it is, how it works, is it safe and free, download.
+ * Home is deliberately brief: what it is, how it works, the demo video, is it safe and free, download.
  * The long-form month story lives at /story and the founder note at /why-free.
  */
 const Index = () => {
@@ -34,6 +35,7 @@ const Index = () => {
       <main>
         <HomeHero revealed={revealed} />
         <HowItWorks />
+        <DemoVideo />
         <Glimpses />
         <FaqSection short />
       </main>
