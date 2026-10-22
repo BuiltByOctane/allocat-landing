@@ -6,12 +6,13 @@ import HomeHero from "@/components/home/HomeHero";
 import HowItWorks from "@/components/home/HowItWorks";
 import DemoVideo from "@/components/home/DemoVideo";
 import Glimpses from "@/components/home/Glimpses";
+import IosWaitlist from "@/components/home/IosWaitlist";
 import FaqSection from "@/components/FaqSection";
 import Footer from "@/components/Footer";
 import { useHeroReveal } from "@/hooks/useHeroReveal";
 
 /**
- * Home is deliberately brief: what it is, how it works, the demo video, is it safe and free, download.
+ * Home is deliberately brief: what it is, how it works, the demo video, the iOS waitlist, is it safe and free, download.
  * The long-form month story lives at /story and the founder note at /why-free.
  */
 const Index = () => {
@@ -37,6 +38,7 @@ const Index = () => {
         <HowItWorks />
         <DemoVideo />
         <Glimpses />
+        <IosWaitlist />
         <FaqSection short />
       </main>
       <Footer />

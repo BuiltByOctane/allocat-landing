@@ -31,6 +31,10 @@ const faqs = [
     a: "It never leaves your phone. AlloCat only receives new incoming messages (it never reads your existing inbox) and parses them on-device. Only the extracted amount, merchant and a hashed duplicate key are synced; the raw message text stays local.",
   },
   {
+    q: "Is AlloCat on iPhone?",
+    a: "Yes, as a web app: open it in Safari and add it to your Home Screen. Hands-free auto-tracking like on Android is what we're bringing to iPhone next. Join the iOS waitlist on the home page and we'll email you once when it's ready.",
+  },
+  {
     q: "Are there any limits at all?",
     a: "One practical one: AI chat has a daily message allowance per account, because each message costs real money to run. Everything else in the app is unlimited, and hitting the AI cap doesn't affect anything else.",
   },
@@ -42,6 +46,7 @@ const SHORT = new Set([
   "Is my bank SMS data safe?",
   "Will there be a paid version?",
   "What is a founding member?",
+  "Is AlloCat on iPhone?",
 ]);
 
 const FaqSection = ({ short = false }: { short?: boolean }) => {

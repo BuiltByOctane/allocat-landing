@@ -18,7 +18,9 @@ export type TrackEvent =
   | "page_view"
   | "cta_play_click"
   | "cta_login_click"
-  | "pwa_ios_help";
+  | "pwa_ios_help"
+  | "cta_waitlist_open"
+  | "waitlist_join";
 
 function platform(): string {
   const ua = navigator.userAgent;

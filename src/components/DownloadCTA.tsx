@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { ArrowRight, Share, Plus, X } from "lucide-react";
+import { ArrowRight, Bell, Share, Plus, X } from "lucide-react";
 import { PillButton } from "@/components/neo/PillButton";
+import WaitlistForm from "@/components/WaitlistForm";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { usePlatform } from "@/hooks/use-platform";
 import { LOGIN_URL, PLAY_STORE_URL } from "@/lib/links";
 import { track, trackClick } from "@/lib/track";
@@ -120,14 +122,55 @@ const IosInstallButton = ({
 };
 
 /**
+ * iOS waitlist CTA. SMS auto-tracking is Android-only for now, so iPhone
+ * visitors are invited to join the waitlist; the form opens in a dialog.
+ */
+const IosWaitlistButton = ({
+  variant = "lime",
+  size = "lg",
+  label = "Join iOS waitlist",
+  className,
+}: {
+  variant?: "lime" | "outline";
+  size?: Size;
+  label?: string;
+  className?: string;
+}) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dialog
+      open={open}
+      onOpenChange={(v) => {
+        if (v) track("cta_waitlist_open");
+        setOpen(v);
+      }}
+    >
+      <PillButton type="button" variant={variant} size={size} className={className} onClick={() => setOpen(true)}>
+        <Bell className="h-4 w-4" /> {label}
+      </PillButton>
+      <DialogContent className="max-h-[90dvh] w-[calc(100%-2rem)] max-w-md overflow-y-auto rounded-card border-border bg-card p-6 sm:rounded-card">
+        <div className="pr-6">
+          <DialogTitle className="t-title mb-1.5 text-foreground">Auto-tracking is coming to iPhone</DialogTitle>
+          <DialogDescription className="t-body text-muted-foreground">
+            Get one email when it launches, and tell us how you'd like it.
+          </DialogDescription>
+        </div>
+        <WaitlistForm source="cta" />
+      </DialogContent>
+    </Dialog>
+  );
+};
+
+/**
  * Single adaptive store button for use inside pricing cards.
- * iOS → PWA install, Android/desktop → Play Store (with the given label).
+ * iOS → waitlist, Android/desktop → Play Store (with the given label).
  */
 export const AppStoreButton = ({
   variant = "outline",
   size = "lg",
   label = "Get it on Google Play",
-  iosLabel = "Add to Home Screen",
+  iosLabel = "Join iOS waitlist",
   className,
 }: {
   variant?: "lime" | "outline";
@@ -138,7 +181,7 @@ export const AppStoreButton = ({
 }) => {
   const platform = usePlatform();
   if (platform === "ios") {
-    return <IosInstallButton variant={variant} size={size} label={iosLabel} className={className} />;
+    return <IosWaitlistButton variant={variant} size={size} label={iosLabel} className={className} />;
   }
   return <PlayStoreButton variant={variant} size={size} label={label} className={className} />;
 };
@@ -146,7 +189,7 @@ export const AppStoreButton = ({
 /**
  * Primary download CTA pair for Hero / Footer. Adapts to the visitor's device:
  * - Android → Play Store (primary) + open in browser
- * - iOS     → Add to Home Screen (primary) + open in browser
+ * - iOS     → Join iOS waitlist (primary) + use web app now (Add to Home Screen steps)
  * - Desktop → Try AlloCat + Get it on Google Play
  */
 export const DownloadCTA = ({ size = "lg" }: { size?: Size }) => {
@@ -173,17 +216,8 @@ export const DownloadCTA = ({ size = "lg" }: { size?: Size }) => {
   if (platform === "ios") {
     return (
       <>
-        <IosInstallButton variant="lime" size={size} />
-        <PillButton asChild variant="outline" size={size}>
-          <a
-              href={LOGIN_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={trackClick("cta_login_click")}
-            >
-            Open in browser <ArrowRight className="h-4 w-4" />
-          </a>
-        </PillButton>
+        <IosWaitlistButton variant="lime" size={size} />
+        <IosInstallButton variant="outline" size={size} label="Use web app now" />
       </>
     );
   }
